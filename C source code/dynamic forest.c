@@ -2,10 +2,10 @@
 #include "mallocSafe.h"
 
 Node *makeDynamicForest (int n){
-	Node *nodeList = mallocSafe (n*sizeof(Node));
+	Node *dynamicForest = mallocSafe (n*sizeof(Node));
 
 	for (int x = 0; x < n; x += 1){
-		nodeList[x] = makeNode ();
+		dynamicForest[x] = makeNode ();
 	}
-	return nodeList;
+	return dynamicForest;
 }
