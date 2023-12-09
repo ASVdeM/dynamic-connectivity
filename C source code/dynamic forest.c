@@ -1,4 +1,3 @@
-#include "node.h"
 #include "mallocSafe.h"
 #include "dynamicForest.h"
 
@@ -11,3 +10,4 @@ Node *makeDynamicForest (int n){
 	}
 	return dynamicForest;
 }
+
