@@ -1,5 +1,6 @@
 #include "node.h"
 #include "mallocSafe.h"
+#include "dynamicForest.h"
 
 //creates an unconnected dynamic forest
 Node *makeDynamicForest (int n){
