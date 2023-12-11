@@ -40,9 +40,9 @@ static void accessNode (Node v) {
 	}
 }
 
-static void evert(Node v) {
-	accessNode(v);
-	reflectSplay(v);
+static void evert (Node v) {
+	accessNode (v);
+	reflectSplay (v);
 }
 
 //adds an edge going from i to j
@@ -53,8 +53,8 @@ void addEdge (Node *dynamicForest, int i, int j){
 	}
 	evert (dynamicForest[i]);
 
-	accessNode(dynamicForest[i]);
-	accessNode(dynamicForest[j]);
+	accessNode (dynamicForest[i]);
+	accessNode (dynamicForest[j]);
 	// i becomes the right child of j
 	joinSplay (dynamicForest[i], dynamicForest[j]);
 }
