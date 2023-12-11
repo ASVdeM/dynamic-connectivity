@@ -8,6 +8,9 @@ void joinSplay (Node v, Node w) {
 	v->size += w->size;
 }
 
+static bool flipBit (bool b){
+	return 1 - b;
+}
 
 static void pushBitDown (Node x) {
 	if (x == NULL) return;
@@ -20,11 +23,11 @@ static void pushBitDown (Node x) {
 		x->bit = 0;
 			Node cLeft = x->leftChild;
 		if (cLeft != NULL) {
-			cLeft->bit = 1 - cLeft->bit;
+			cLeft->bit = flipBit (cLeft->bit);
 		}
 			Node cRight = x->rightChild;
 		if (cRight != NULL) {
-			cRight->bit = 1 - cRight->bit;
+			cRight->bit = flipBit (cRight->bit);
 		}
 	}
 }
