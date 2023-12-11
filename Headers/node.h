@@ -1,5 +1,6 @@
 #ifndef __NODE_H__
 #define __NODE_H__
+#include <stdbool.h>
 
 typedef struct node *Node;
 struct node {
@@ -8,9 +9,9 @@ struct node {
 	Node rightChild;
 	Node parent;
 	Node pathParent;
-	int bit;
+	bool bit;
 	unsigned int size;
-	int isSplayTreeRoot;
+	bool isSplayTreeRoot;
 };
 
 Node makeNode ();

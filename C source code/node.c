@@ -15,12 +15,12 @@ Node makeNode(){
 	p->leftChild = NULL;
 	p->parent = NULL;
 	p->pathParent = NULL;
-	p->bit = 1;
+	p->bit = true;
 	p->size = 0;
-	p->isSplayTreeRoot = 0;
+	p->isSplayTreeRoot = false;
 	return p;
 }
 
 void setSplayTreeRoot (Node n){
-	n->isSplayTreeRoot = 1;
+	n->isSplayTreeRoot = true;
 }
