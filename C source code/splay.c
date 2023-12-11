@@ -8,16 +8,15 @@ void join (Node v, Node w) {
 	v->size += w->size;
 }
 
-static void swapChildren (Node n) {
-	Node aux = n->leftChild;
-	n->leftChild = n->rightChild;
-	n->rightChild = aux;
-}
 
 static void pushBitDown (Node x) {
 	if (x == NULL) return;
 	if (x->bit == 1) {
-		swapChildren (x);
+		//swap children
+		Node aux = x->leftChild;
+		x->leftChild = x->rightChild;
+		x->rightChild = aux;
+		
 		x->bit = 0;
 			Node cLeft = x->leftChild;
 		if (cLeft != NULL) {
