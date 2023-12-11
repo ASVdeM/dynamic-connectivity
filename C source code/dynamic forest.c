@@ -40,14 +40,18 @@ static void accessNode (Node v) {
 	}
 }
 
+static void evert(Node v) {
+	accessNode(v);
+	reflectSplay(v);
+}
+
 //adds an edge going from i to j
 void addEdge (Node *dynamicForest, int i, int j){
 	if (dynamicForest == NULL){
 		fprintf (stderr, "addEdge error: You have called this function with a null pointer!\n");
 		return;
 	}
-	accessNode (dynamicForest[i]);
-	reflectSplay (dynamicForest[i]);
+	evert (dynamicForest[i]);
 
 	accessNode(dynamicForest[i]);
 	accessNode(dynamicForest[j]);
