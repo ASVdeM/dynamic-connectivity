@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "mallocSafe.h"
 #include "dynamicForest.h"
 #include "splay.h"
@@ -12,3 +13,44 @@ Node *makeDynamicForest (int n){
 	return dynamicForest;
 }
 
+//Accesses the node v, creating the preferred path from the LCT root to the node v.
+//By the end of the function, v is the root of its Splay Tree.
+//In other words, v.rightChild == NULL because v is the node whose value is the greatest in the Splay,
+//and so, it is the node with the biggest depth in the LCT.
+static void accessNode (Node v) {
+	Node w;
+	createSplay (v);
+	if (v->rightChild != NULL) {
+		v->rightChild->pathParent = v;
+		v->rightChild->parent = NULL;
+	}
+	v->rightChild = NULL;
+	while (v->pathParent != NULL) {
+		w = v->pathParent;
+		createSplay (w);
+		
+		if (w->rightChild != NULL) {
+			w->rightChild->pathParent = w;
+			w->rightChild->parent = NULL;
+		}
+		
+		joinSplay (w, v);
+		v->pathParent = NULL;
+		createSplay (v);
+	}
+}
+
+//adds an edge going from i to j
+void addEdge (Node *dynamicForest, int i, int j){
+	if (dynamicForest == NULL){
+		fprintf (stderr, "addEdge error: You have called this function with a null pointer!\n");
+		return;
+	}
+	accessNode (dynamicForest[i]);
+	reflectSplay (dynamicForest[i]);
+
+	accessNode(dynamicForest[i]);
+	accessNode(dynamicForest[j]);
+	// i becomes the right child of j
+	joinSplay (dynamicForest[i], dynamicForest[j]);
+}
