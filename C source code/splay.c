@@ -1,6 +1,13 @@
 #include <stdlib.h>
 #include "splay.h"
 
+// v becomes the right child of w
+void join (Node v, Node w) {
+	v->rightChild = w;
+	w->parent = v;
+	v->size += w->size;
+}
+
 static void swapChildren (Node n) {
 	Node aux = n->leftChild;
 	n->leftChild = n->rightChild;
