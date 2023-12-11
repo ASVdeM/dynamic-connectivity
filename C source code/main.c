@@ -16,5 +16,11 @@ int main (int argc, char *argv[]) {
 		n = atoi (numberBuffer);
 	}
 	Node *dynamicForest = makeDynamicForest (n);
+	if (n > 1){
+		puts ("The nodes will now be connected randomly.");
+		for (int x = rand () % n; x > 0; x--){
+			addEdge (dynamicForest, rand () % n, rand () % n);
+		}
+	}
 	return 0;
 }
