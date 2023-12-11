@@ -17,5 +17,10 @@ Node makeNode(){
 	p->pathParent = NULL;
 	p->bit = 1;
 	p->size = 0;
+	p->isSplayTreeRoot = 0;
 	return p;
+}
+
+void setSplayTreeRoot (Node n){
+	n->isSplayTreeRoot = 1;
 }

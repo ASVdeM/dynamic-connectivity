@@ -10,7 +10,10 @@ struct node {
 	Node pathParent;
 	int bit;
 	unsigned int size;
+	int isSplayTreeRoot;
 };
-Node makeNode();
+
+Node makeNode ();
+void setSplayTreeRoot (Node n);
 
 #endif /* __NODE_H__ */

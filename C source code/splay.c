@@ -93,5 +93,5 @@ void splay (Node x) {
 	}
 	//ensure that x->bit == 0
 	pushBitDown (x);
-	root = x;
+	setSplayTreeRoot (x);
 }
