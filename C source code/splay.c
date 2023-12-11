@@ -97,3 +97,8 @@ void createSplay (Node x) {
 	pushBitDown (x);
 	setSplayTreeRoot (x);
 }
+
+void reflectSplay (Node v){
+	v->bit = flipBit (v->bit);
+	pushBitDown(v);
+}

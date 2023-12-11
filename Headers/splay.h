@@ -3,6 +3,7 @@
 #include "node.h"
 void joinSplay (Node v, Node w);
 void createSplay (Node x);
+void reflectSplay (Node v);
 
 #endif /* __SPLAY_H__ */
 
