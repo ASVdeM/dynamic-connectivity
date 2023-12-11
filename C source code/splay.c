@@ -2,7 +2,7 @@
 #include "splay.h"
 
 // v becomes the right child of w
-void join (Node v, Node w) {
+void joinSplay (Node v, Node w) {
 	v->rightChild = w;
 	w->parent = v;
 	v->size += w->size;
@@ -64,7 +64,7 @@ static void rotate (Node x) {
 }
 
 //creates a splay tree with x being its root
-void splay (Node x) {
+void createSplay (Node x) {
 	while (x->parent != NULL) {
 		Node father = x->parent;
 			if (father->parent == NULL) {
