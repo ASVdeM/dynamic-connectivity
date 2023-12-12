@@ -58,3 +58,15 @@ void addEdge (Node *dynamicForest, int i, int j){
 	// i becomes the right child of j
 	joinSplay (dynamicForest[i], dynamicForest[j]);
 }
+
+//adds the edge going from i to j
+void deleteEdge (Node *dynamicForest, int i, int j) {
+	evert (dynamicForest[i]);
+	accessNode(dynamicForest[j]);
+
+	if (dynamicForest[j]->leftChild == NULL) {
+		fprintf (stderr, "deleteEdge error: dynamicForest[%d]->leftChild is NULL!\n", j);
+		exit (EXIT_FAILURE);
+	}
+	splitSplay (maxSplay (dynamicForest[j]->leftChild));
+}

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "splay.h"
 
@@ -101,4 +102,49 @@ void createSplay (Node x) {
 void reflectSplay (Node v){
 	v->bit = flipBit (v->bit);
 	pushBitDown(v);
+}
+
+static Node selectChild (Node n){
+	if (n->bit == false)
+		return n->rightChild;
+	else
+		return n->leftChild;
+	}
+
+static Node maximum(Node x) {
+	if (x == NULL) {
+		fprintf (stderr, "You have passed a null pointer to the maximum function!\n");
+		exit (EXIT_FAILURE);
+	}
+	//if there is a true bit in the subtrees, it needs to be pushed down in order to know how to proceed
+	pushBitDown (x);
+	
+	if (selectChild (x) == NULL)
+		return x;
+		
+	return maximum (selectChild (x));
+}
+
+Node maxSplay(Node x) {
+	Node m = maximum (x);
+	createSplay (m);
+	return m;
+}
+
+void splitSplay (Node x) {
+	if (x->bit==1){
+		fprintf (stderr, "splitSplay error: the bit had value 1.\n");
+	}
+	
+	Node greaterThanX = selectChild (x);
+	
+	if (greaterThanX != NULL) {
+		greaterThanX->parent = NULL;
+		x->size = x->size - greaterThanX->size;
+		greaterThanX->bit ^= x->bit;
+	}
+	if (x->bit == false)
+		x->rightChild = NULL;
+	else
+		x->leftChild = NULL;
 }
