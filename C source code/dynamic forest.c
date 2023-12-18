@@ -81,3 +81,12 @@ static Node findroot(Node v) {
 bool connected (Node *dynamicForest, int i, int j) {
 	return findroot (dynamicForest[i]) == findroot (dynamicForest[j]);
 }
+
+//returns the size of the tree containing the node i
+unsigned int size (Node *dynamicForest, int i){
+	Node root = findroot (dynamicForest[i]);
+	if (root == NULL)
+		return 0;
+	else
+		return root->size;
+}
