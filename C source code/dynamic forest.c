@@ -70,3 +70,14 @@ void deleteEdge (Node *dynamicForest, int i, int j) {
 	}
 	splitSplay (maxSplay (dynamicForest[j]->leftChild));
 }
+
+static Node findroot(Node v) {
+	accessNode (v);
+	Node m = minSplay (v);
+	return m;
+}
+
+//checks if the nodes i and j are connected
+bool connected (Node *dynamicForest, int i, int j) {
+	return findroot (dynamicForest[i]) == findroot (dynamicForest[j]);
+}

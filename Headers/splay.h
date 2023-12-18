@@ -6,6 +6,7 @@ void joinSplay (Node v, Node w);
 void reflectSplay (Node v);
 void splitSplay (Node x);
 Node maxSplay(Node x);
+Node minSplay(Node x);
 
 #endif /* __SPLAY_H__ */
 

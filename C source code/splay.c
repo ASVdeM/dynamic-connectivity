@@ -148,3 +148,16 @@ void splitSplay (Node x) {
 	else
 		x->leftChild = NULL;
 }
+
+static Node minimum(Node x) {
+	//if there is a true bit in the subtrees, it needs to be pushed down in order to know how to proceed
+	pushBitDown (x);
+	if (selectChild (x) == NULL) return x;
+	return minimum (selectChild (x));
+}
+
+Node minSplay(Node x) {
+	Node m = minimum (x);
+	createSplay (m);
+	return m;
+}
