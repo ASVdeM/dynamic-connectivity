@@ -22,5 +22,15 @@ int main (int argc, char *argv[]) {
 			addEdge (dynamicForest, rand () % n, rand () % n);
 		}
 	}
+	for (int x = 0; x < n; x += 1){
+		for (int y = x; y < n; y += 1){
+			printf ("%d and %d are ", x, y);
+			if (connected (dynamicForest, x, y) == false)
+				printf ("not ");
+			puts ("connected");
+		}
+	}
+	
+	
 	return 0;
 }
