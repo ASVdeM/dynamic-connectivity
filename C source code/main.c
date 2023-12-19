@@ -30,7 +30,9 @@ int main (int argc, char *argv[]) {
 			puts ("connected");
 		}
 	}
-	
+	for (int x = 0; x < n; x += 1){
+		printf ("size of %d: %u\n", x, size (dynamicForest, x));
+	}
 	
 	return 0;
 }
